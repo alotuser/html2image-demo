@@ -1,6 +1,6 @@
 # html2image-demo
 
-'''
+``` java
 @page {
 			size: A4;
 			margin: 2.5cm 1.8cm 2cm 1.9cm;
@@ -41,4 +41,4 @@
     font-size: 12px;
   }
 }
-'''
+```
