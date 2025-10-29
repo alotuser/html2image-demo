@@ -18,12 +18,11 @@ public class SimpleTest {
 	public static void main(String[] args) throws Exception {
 		 
 		
+		String resHtml="2.html";
 		
 		ClassLoader classLoader = new SimpleTest().getClass().getClassLoader();
-		
-		URL resourceUrl = classLoader.getResource("1.html");
+		URL resourceUrl = classLoader.getResource(resHtml);
 		String path = resourceUrl.getPath();
-		
 		String html = HtmlRender.readHtml(path);
 
 		HtmlRender htmlRender = HtmlRender.create(BufferedImage.TYPE_INT_RGB);
@@ -31,14 +30,14 @@ public class SimpleTest {
 		htmlRender.setPageWidth(400f);
 		htmlRender.setPageHeight(300f);
 		htmlRender.setScale(1f);
-
+		htmlRender.setLoggingEnabled(true);
 		// htmlRender.toImage(html, BuilderConfig.WITH_CUSTOM);
 
 //		htmlRender.toImage(html, builder->{
 //			 builder.useFont(new File("myfont"), "myfont");
 //		});
 //		
-		htmlRender.toPng(html, "D://1.png");
+		htmlRender.toPng(html, "D://"+resHtml+".png");
 
 		
 		
@@ -51,12 +50,12 @@ public class SimpleTest {
 
 		Rectangle f = mers.values().stream().findFirst().get();
 
-		BufferedImage original = ImageIO.read(new File("D:\\1.png"));
+		BufferedImage original = ImageIO.read(new File("D:\\"+resHtml+".png"));
 
 		Rectangle rect = new Rectangle(f.x, f.y, f.width, f.height);
 
 		BufferedImage cropped = ImageCropUtil.cropImage(original, rect);
-		ImageIO.write(cropped, "png", new File("D:\\1-cropped.png"));
+		ImageIO.write(cropped, "png", new File("D:\\"+resHtml+"-cropped.png"));
 
 	}
 
