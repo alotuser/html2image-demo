@@ -3,7 +3,6 @@ package cn.test;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.net.URL;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -11,6 +10,7 @@ import javax.imageio.ImageIO;
 import org.w3c.dom.Element;
 
 import cn.alotus.HtmlRender;
+import cn.alotus.core.io.resource.ResourceUtil;
 import cn.alotus.util.ImageCropUtil;
 
 public class SimpleTest {
@@ -19,12 +19,9 @@ public class SimpleTest {
 		 
 		
 		String resHtml="2.html";
+		String html = ResourceUtil.readUtf8Str(resHtml);
 		
-		ClassLoader classLoader = new SimpleTest().getClass().getClassLoader();
-		URL resourceUrl = classLoader.getResource(resHtml);
-		String path = resourceUrl.getPath();
-		String html = HtmlRender.readHtml(path);
-
+		
 		HtmlRender htmlRender = HtmlRender.create(BufferedImage.TYPE_INT_RGB);
 		htmlRender.addFontDirectory("D:/myfonts");
 		htmlRender.setPageWidth(400f);
