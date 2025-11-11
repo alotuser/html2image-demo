@@ -3,6 +3,7 @@ package cn.test;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URL;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -20,10 +21,10 @@ public class SimpleTest {
 		
 		String resHtml="2.html";
 		String html = ResourceUtil.readUtf8Str(resHtml);
-		
+		URL fonts= ResourceUtil.getResource("fonts");
 		
 		HtmlRender htmlRender = HtmlRender.create(BufferedImage.TYPE_INT_RGB);
-		htmlRender.addFontDirectory("D:/myfonts");
+		htmlRender.addFontDirectory(fonts.getPath());
 		htmlRender.setPageWidth(400f);
 		htmlRender.setPageHeight(300f);
 		htmlRender.setScale(1f);
